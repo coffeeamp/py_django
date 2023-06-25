@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-al7pk0%u40rr)txce^4w9w-bru5vok)g=@dse-5)udls9j5j=@'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# SECURITY WARNING: don't run with debug turned on in production! # 디버그 모드를 켜놓으면 에러가 났을 때 에러를 보여줌, 배포할 때는 꺼야함
 DEBUG = True
 
 ALLOWED_HOSTS = []
