@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound, Http404, HttpResponseRedirect
-
+from django.urls import reverse
 
 
 articles = {  
@@ -8,6 +8,10 @@ articles = {
     'finance' : 'Finance page',
     'politics' : 'Politics page',
 }
+
+def simple_view(request):
+    return render(request, 'first_app/example.html') # .html
+
 
 def news_view(request, topic):
     
@@ -18,12 +22,15 @@ def news_view(request, topic):
     except:
         raise Http404("Page not found") # 404 에러를 발생시킴
         
+
+# domain.com/first_app/0 --> domain.com/first_app/sports
 def num_page_view(request, num_page):
     
     topics_list = list(articles.keys()) # [sports, finance, politics] 인덱스는 0,1,2
     topic = topics_list[num_page] # 0,1,2 중 하나의 값을 가짐
     
-    return HttpResponseRedirect(topic)
+    
+    return HttpResponseRedirect(reverse('topic-page', args=[topic]))
 
 # #동적 라우팅,뷰
 # def add_view(request, num1, num2):
@@ -31,3 +38,5 @@ def num_page_view(request, num_page):
 #     add_result = num1 + num2
 #     result = f"{num1} + {num2} = {add_result}"
 #     return HttpResponse(str(result))
+
+
