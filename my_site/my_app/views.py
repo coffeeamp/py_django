@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from django.urls import reverse
 from . import models
+from .forms import ReviewForm
 
 # Create your views here.
 
@@ -47,3 +48,22 @@ def delete(request):
     else:
         return render(request, 'my_app/delete.html')
 
+#----------------------------------------------#
+# 2023.07.10
+
+def rental_review(request):
+    # POST REQUEST -> FORM CONTENTS -> THANK YOU
+    if request.method == 'POST':
+        form = ReviewForm(request.POST) # form에 POST 요청의 내용을 담음
+        if form.is_valid(): # form이 유효하다면
+            # {'name': '이름', 'email': '이메일', 'review': '후기'}
+            print(form.cleaned_data) # form.cleaned_data를 출력
+            return redirect(reverse('my_app:thank_you')) # thank_you.html로 redirect
+        
+    # ELSE, RENDER FORM
+    else: # GET 요청이 들어왔을 때
+        form = ReviewForm() # form에 ReviewForm을 담음
+    return render(request, 'my_app/rental_review.html',context={'form':form})
+
+def thank_you(request):
+    return render(request, 'my_app/thank_you.html')
