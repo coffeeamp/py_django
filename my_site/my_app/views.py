@@ -56,6 +56,7 @@ def rental_review(request):
     if request.method == 'POST':
         form = ReviewForm(request.POST) # form에 POST 요청의 내용을 담음
         if form.is_valid(): # form이 유효하다면
+            form.save() # form을 저장
             # {'name': '이름', 'email': '이메일', 'review': '후기'}
             print(form.cleaned_data) # form.cleaned_data를 출력
             return redirect(reverse('my_app:thank_you')) # thank_you.html로 redirect

@@ -1,7 +1,7 @@
 from django.contrib import admin
-from my_app.models import Car
+from my_app.models import Car, Review
 # Register your models here.
-
+admin.site.register(Review)
 
 
 class CarAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class CarAdmin(admin.ModelAdmin):
         ('CAR INFORMATION', {'fields': ['brand']}),
     ]
 admin.site.register(Car,CarAdmin)
+

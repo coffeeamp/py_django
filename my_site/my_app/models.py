@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
 
 # Create your models here.
 
@@ -21,3 +22,11 @@ class Car(models.Model):
     
     def __str__(self): # 객체를 문자열로 표현할 때 사용
         return f"Car is {self.brand} {self.year}"   # Car is brand year
+
+
+class Review(models.Model):
+    name = models.CharField(max_length=30)
+    stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)]) # 별점은 1~5 사이의 정수
+    
+    
+    
