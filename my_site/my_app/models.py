@@ -29,4 +29,11 @@ class Review(models.Model):
     stars = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(5)]) # 별점은 1~5 사이의 정수
     
     
+
+class Teacher(models.Model):
+    name = models.CharField(max_length=30)
+    age = models.IntegerField()
+    subject = models.CharField(max_length=30)
     
+    def __str__(self):
+        return f"{self.name} is {self.age} years old and teaches {self.subject}."
