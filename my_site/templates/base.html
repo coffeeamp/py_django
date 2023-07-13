@@ -23,11 +23,15 @@
             <a class="nav-link" href="{% url 'my_app:list' %}">LIST</a>
             <a class="nav-link" href="{% url 'my_app:add' %}">ADD</a> 
             <a class="nav-link" href="{% url 'my_app:delete' %}">DELETE</a> 
+            <a class="nav-link" href="{% url 'my_app:rental_review' %}">REVIEW</a>
           </div>
         </div>
       </div>
     </nav>
   {%block content%}
-  {% endblock %}  
+  {% endblock %}
+    <ul>
+      <a href="{% url "my_app:home" %}"> Home</a>
+    </ul>
   </body>
   </html>

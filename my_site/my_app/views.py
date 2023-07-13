@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from . import models
 from .forms import ReviewForm
+from django.views.generic import TemplateView
 
 # Create your views here.
 
@@ -68,3 +69,9 @@ def rental_review(request):
 
 def thank_you(request):
     return render(request, 'my_app/thank_you.html')
+
+#----------------------------------------------#
+# 2023.07.13
+
+class HomeView(TemplateView):
+    template_name = 'my_app/home.html'
