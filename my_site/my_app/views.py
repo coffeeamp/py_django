@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from django.urls import reverse
 from . import models
 from .forms import ReviewForm
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
+from my_app.forms import ContactForm
 
 # Create your views here.
 
@@ -75,3 +76,6 @@ def thank_you(request):
 
 class HomeView(TemplateView):
     template_name = 'my_app/home.html'
+
+class ContactFormView(FormView):
+    form_class = ContactForm

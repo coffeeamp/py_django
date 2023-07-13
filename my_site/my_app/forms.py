@@ -26,3 +26,7 @@ class ReviewForm(ModelForm):
                     'max_value' : '최대 5점까지만 주실 수 있습니다.',
                 },
         }
+        
+class ContactForm(forms.Form):
+    name = forms.CharField()
+    message = forms.CharField(widget=forms.Textarea)
