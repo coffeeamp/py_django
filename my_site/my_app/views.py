@@ -79,3 +79,13 @@ class HomeView(TemplateView):
 
 class ContactFormView(FormView):
     form_class = ContactForm
+    template_name = 'my_app/contact.html'
+    
+    # success_url
+    success_url = '/my_app/thank_you/'
+    
+    # form_valid
+    def form_valid(self, form):
+        print(form.cleaned_data)
+        # 함수기반뷰의 ContactForm(request.POST) -> 클래스기반뷰 form.cleaned_data
+        return super().form_valid(form)

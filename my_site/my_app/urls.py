@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import HomeView
+from .views import HomeView, ContactFormView
 
 
 app_name = 'my_app'
@@ -14,5 +14,5 @@ urlpatterns = [
     path('rental_review/', views.rental_review, name='rental_review'),
     path('thank_you/', views.thank_you, name='thank_you'),
     path('home/', HomeView.as_view(), name='home'),
-    path('thank_you/', views.thank_you, name='thank_you'),
+    path('contact/', ContactFormView.as_view(), name='contact'),
 ]

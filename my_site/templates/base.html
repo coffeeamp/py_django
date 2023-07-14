@@ -31,7 +31,13 @@
   {%block content%}
   {% endblock %}
     <ul>
-      <a href="{% url "my_app:home" %}"> Home</a>
+      <li>
+        <a href="{% url "my_app:home" %}"> Home</a>
+      </li>
+      <li>
+        <a href="{% url "my_app:contact" %}">contact</a>
+      </li>
+      
     </ul>
   </body>
   </html>
