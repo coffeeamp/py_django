@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from . import models
+from my_app.models import Teacher
 from .forms import ReviewForm
-from django.views.generic import TemplateView, FormView
+from django.views.generic import TemplateView, FormView, CreateView
 from my_app.forms import ContactForm
 
 # Create your views here.
@@ -89,3 +90,12 @@ class ContactFormView(FormView):
         print(form.cleaned_data)
         # 함수기반뷰의 ContactForm(request.POST) -> 클래스기반뷰 form.cleaned_data
         return super().form_valid(form)
+
+#----------------------------------------------#    
+# 2023.07.15
+
+class TeacherCreateView(CreateView):
+    model = Teacher # 1단계 모델에 연결
+    fields = "__all__" # 2단계 필드에 연결, 모든 필드가 이 템플릿에 표시되도록 __all__을 사용
+    success_url = reverse_lazy('my_app:thank_you') # 3단계 성공하면 thank_you.html로 이동
+    
