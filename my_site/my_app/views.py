@@ -117,5 +117,8 @@ class TeacherUpdateView(UpdateView):
     fields = "__all__"
     success_url = reverse_lazy('my_app:list_teacher')
 class TeacherDeleteView(DeleteView):
+    # Form -> form_confirm_delete.html 템플릿에 연결
+    # default template_name = my_app/teacher_confirm_delete.html
+    
     model = Teacher
     success_url = reverse_lazy('my_app:list_teacher')
