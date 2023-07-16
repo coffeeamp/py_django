@@ -3,7 +3,7 @@ from django.urls import reverse, reverse_lazy
 from . import models
 from my_app.models import Teacher
 from .forms import ReviewForm
-from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView
+from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView, UpdateView, DeleteView
 from my_app.forms import ContactForm
 
 # Create your views here.
@@ -22,8 +22,7 @@ def example_view(request):
 def variable_view(request):
     return render(request, 'my_app/variable.html',)
 
-#----------------------------------------------# 
-# 2023.07.07
+
 def list(request):
     all_cars = models.Car.objects.all()
     context = {'all_cars': all_cars}
@@ -51,8 +50,6 @@ def delete(request):
     else:
         return render(request, 'my_app/delete.html')
 
-#----------------------------------------------#
-# 2023.07.10
 # TemplateView
 def rental_review(request):
     # POST REQUEST -> FORM CONTENTS -> THANK YOU
@@ -72,8 +69,6 @@ def rental_review(request):
 def thank_you(request):
     return render(request, 'my_app/thank_you.html')
 
-#----------------------------------------------#
-# 2023.07.13
 # FormView
 class HomeView(TemplateView):
     template_name = 'my_app/home.html'
@@ -91,8 +86,6 @@ class ContactFormView(FormView):
         # 함수기반뷰의 ContactForm(request.POST) -> 클래스기반뷰 form.cleaned_data
         return super().form_valid(form)
 
-#----------------------------------------------#    
-# 2023.07.15
 # CreateView
 class TeacherCreateView(CreateView):
     model = Teacher # 1단계 모델에 연결
@@ -111,10 +104,18 @@ class TeacherListView(ListView):
     context_object_name = 'teachers_list' # context_object_name을 teachers로 설정
     
 
-#----------------------------------------------#
-# 2023.07.16
+
 # DetailView
 class TeacherDetailView(DetailView):
     # model_detail.html 템플릿에 연결
     model = Teacher
     
+    # PK --> {{teacher}} /DetailView의 역할은 Teacher의 특정 PK에 대한 teacher를 이 html에 대한 context 객체로 보내는것
+class TeacherUpdateView(UpdateView):
+    # model_form.html 템플릿에 연결
+    model = Teacher
+    fields = "__all__"
+    success_url = reverse_lazy('my_app:list_teacher')
+class TeacherDeleteView(DeleteView):
+    model = Teacher
+    success_url = reverse_lazy('my_app:list_teacher')
