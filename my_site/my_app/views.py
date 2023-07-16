@@ -3,7 +3,7 @@ from django.urls import reverse, reverse_lazy
 from . import models
 from my_app.models import Teacher
 from .forms import ReviewForm
-from django.views.generic import TemplateView, FormView, CreateView
+from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView
 from my_app.forms import ContactForm
 
 # Create your views here.
@@ -53,7 +53,7 @@ def delete(request):
 
 #----------------------------------------------#
 # 2023.07.10
-
+# TemplateView
 def rental_review(request):
     # POST REQUEST -> FORM CONTENTS -> THANK YOU
     if request.method == 'POST':
@@ -74,7 +74,7 @@ def thank_you(request):
 
 #----------------------------------------------#
 # 2023.07.13
-
+# FormView
 class HomeView(TemplateView):
     template_name = 'my_app/home.html'
 
@@ -93,9 +93,28 @@ class ContactFormView(FormView):
 
 #----------------------------------------------#    
 # 2023.07.15
-
+# CreateView
 class TeacherCreateView(CreateView):
     model = Teacher # 1단계 모델에 연결
     fields = "__all__" # 2단계 필드에 연결, 모든 필드가 이 템플릿에 표시되도록 __all__을 사용
     success_url = reverse_lazy('my_app:thank_you') # 3단계 성공하면 thank_you.html로 이동
+    
+# ListView
+class TeacherListView(ListView):
+    # model_list.html 템플릿에 연결
+    model = Teacher
+    
+    # 디폴트 쿼리 재정의
+    queryset = Teacher.objects.order_by('age')
+    
+    # model_list.html 템플릿에 넘겨줄 context_object_name 설정
+    context_object_name = 'teachers_list' # context_object_name을 teachers로 설정
+    
+
+#----------------------------------------------#
+# 2023.07.16
+# DetailView
+class TeacherDetailView(DetailView):
+    # model_detail.html 템플릿에 연결
+    model = Teacher
     
