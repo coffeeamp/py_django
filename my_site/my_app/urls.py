@@ -29,6 +29,6 @@ urlpatterns = [
     path('update_teacher/<int:pk>', TeacherUpdateView.as_view(), name='update_teacher'),
     path('delete_teacher/<int:pk>', TeacherDeleteView.as_view(), name='delete_teacher'),
     path("hello/", helloAPI),
-    path("Quiz/<int:id>/", randomQuizAPI)
+    path("<int:id>/", randomQuizAPI)
     
 ]
