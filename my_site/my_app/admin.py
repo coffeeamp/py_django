@@ -1,5 +1,5 @@
 from django.contrib import admin
-from my_app.models import Car, Review
+from .models import Car, Review, Quiz
 # Register your models here.
 admin.site.register(Review)
 
@@ -10,4 +10,5 @@ class CarAdmin(admin.ModelAdmin):
         ('CAR INFORMATION', {'fields': ['brand']}),
     ]
 admin.site.register(Car,CarAdmin)
+admin.site.register(Quiz)
 

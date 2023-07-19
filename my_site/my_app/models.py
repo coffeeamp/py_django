@@ -36,6 +36,7 @@ class Teacher(models.Model):
     
     def __str__(self):
         return f"{self.name} is {self.age} years old and teaches {self.subject}."
-class User(models.Model):
-    name = models.CharField(max_length=30)
-    
+class Quiz(models.Model):
+    title = models.CharField(max_length=200)
+    body = models.TextField()
+    answer = models.IntegerField()
