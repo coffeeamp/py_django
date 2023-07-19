@@ -13,7 +13,6 @@ class Patient(models.Model):
     
     
 #----------------------------------------------#
-# 2023.07.07
 
 class Car(models.Model):
     #pk
@@ -37,3 +36,6 @@ class Teacher(models.Model):
     
     def __str__(self):
         return f"{self.name} is {self.age} years old and teaches {self.subject}."
+class User(models.Model):
+    name = models.CharField(max_length=30)
+    
