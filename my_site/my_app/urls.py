@@ -7,7 +7,7 @@ from .views import (HomeView,
                     TeacherDetailView,
                     TeacherUpdateView,
                     TeacherDeleteView,
-                    helloAPI, randomQuizAPI,
+                    helloAPI, randomQuizAPI, teacherAPI,
                     )
 
 
@@ -28,7 +28,8 @@ urlpatterns = [
     path('detail_teacher/<int:pk>', TeacherDetailView.as_view(), name='detail_teacher'),
     path('update_teacher/<int:pk>', TeacherUpdateView.as_view(), name='update_teacher'),
     path('delete_teacher/<int:pk>', TeacherDeleteView.as_view(), name='delete_teacher'),
-    path("hello/", helloAPI),
-    path("<int:id>/", randomQuizAPI)
+    path('hello/', helloAPI),
+    path('<int:pk>/', randomQuizAPI),
+    path('teacher/', teacherAPI),
     
 ]

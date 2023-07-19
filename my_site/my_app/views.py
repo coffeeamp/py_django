@@ -126,7 +126,7 @@ class TeacherDeleteView(DeleteView):
 #--------------------------------#
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from .serializers import QuizSerializer
+from .serializers import QuizSerializer, TeacherSerializer
 from .models import Quiz
 import random
 
@@ -135,9 +135,16 @@ import random
 def helloAPI(request): # API테스트를 위한 샘플 코드
     return Response("hello world!")
 
+# 퀴즈 목록을 보여주는 API
 @api_view(['GET'])
 def randomQuizAPI(request,id): # id를 받아와서 id개수만큼 랜덤으로 퀴즈를 뽑아서 보여줌
     totalQuizs = Quiz.objects.all() # 모든 퀴즈를 가져옴
-    randomQuizs = random.sample(list(totalQuizs), id) # totalQuizs를 list로 만들고 id개수만큼 랜덤으로 뽑음
+    randomQuizs = (list(totalQuizs) ) # totalQuizs를 list로 만들고 id개수만큼 랜덤으로 뽑음
     serializer = QuizSerializer(randomQuizs, many=True) #many 부분을 통해 다량의 데이터도 직렬화 진행
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def teacherAPI(request):
+    teachers = Teacher.objects.all() # name과 age만 가져옴
+    serializer = TeacherSerializer(teachers, many=True)
     return Response(serializer.data)
