@@ -29,6 +29,8 @@ class Review(models.Model):
     
     
 
+#----------------------------------------------#
+# API 테스트용 모델
 class Teacher(models.Model):
     name = models.CharField(max_length=30)
     age = models.IntegerField()
@@ -40,3 +42,12 @@ class Quiz(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     answer = models.IntegerField()
+#----------------------------------------------#
+# Flutter Contact Test
+class Employee(models.Model):
+    eid = models.CharField(max_length=20)
+    ename = models.CharField(max_length=100)
+    eemail = models.EmailField()
+    econtact = models.CharField(max_length=15)
+    class Meta:
+        db_table = "employee"
