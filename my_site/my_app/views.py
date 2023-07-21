@@ -152,24 +152,4 @@ def teacherAPI(request):
 #--------------------------------#
 # flutter와 연동하기 위한 API
 
-from django.shortcuts import render, redirect
-from .models import Employee
-from .serializers import EmployeeSerializer
-from rest_framework import viewsets
-from rest_framework.decorators import action
-
-class EmployeeViewSet(viewsets.ModelViewSet):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
-
-    def get_extra_actions(self):
-        actions = super().get_extra_actions()
-        actions['custom_action'] = ['POST']
-        return actions
-
-    @action(detail=True, methods=['POST'])
-    def custom_action(self, request, pk=None):
-        # Custom action logic here
-        return Response({'message': 'Custom action executed successfully'})
-
 
