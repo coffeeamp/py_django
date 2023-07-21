@@ -1,6 +1,6 @@
 from django.urls import path, include
 from . import views
-from .views import (HomeView, 
+from .views import (HomeView,
                     ContactFormView, 
                     TeacherCreateView,
                     TeacherListView,
@@ -8,18 +8,14 @@ from .views import (HomeView,
                     TeacherUpdateView,
                     TeacherDeleteView,
                     helloAPI, randomQuizAPI, teacherAPI,
-                    Employee
+                    
                     )
 
-from rest_framework import routers
-
-router = routers.DefaultRouter(trailing_slash=False)
-router.register('employeedetails', views.Employee, basename='employeedetail')
 
 app_name = 'my_app'
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('', views.example_view, name='example'),
     path('variable/', views.variable_view, name='variable'),
     path('list/', views.list, name='list'),
     path('add/', views.add, name='add'),
