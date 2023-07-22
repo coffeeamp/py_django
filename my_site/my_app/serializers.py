@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Quiz, Teacher, Employee
+from .models import Quiz, Teacher, Student
 
 class QuizSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,7 +11,7 @@ class TeacherSerializer(serializers.ModelSerializer):
         fields = '__all__'
 #--------------------------------#
 # flutter
-class EmployeeSerializer(serializers.ModelSerializer):
+class StudentSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Employee
+        model = Student
         fields = '__all__'

@@ -32,5 +32,6 @@ urlpatterns = [
     path('hello/', helloAPI),
     path('<int:pk>/', randomQuizAPI),
     path('teacher/', teacherAPI),
+    path('student/', views.StudentList.as_view(), name='student'),
     
 ]

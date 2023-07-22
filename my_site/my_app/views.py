@@ -151,5 +151,12 @@ def teacherAPI(request):
 
 #--------------------------------#
 # flutter와 연동하기 위한 API
+from django.shortcuts import render
+from .serializers import StudentSerializer
+from rest_framework.generics import ListAPIView
+
+class StudentList(ListAPIView):
+    queryset = models.Student.objects.all()
+    serializer_class = StudentSerializer
 
 
