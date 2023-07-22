@@ -154,9 +154,10 @@ def teacherAPI(request):
 from django.shortcuts import render
 from .serializers import StudentSerializer
 from rest_framework.generics import ListAPIView
-
+from rest_framework import permissions
 class StudentList(ListAPIView):
     queryset = models.Student.objects.all()
     serializer_class = StudentSerializer
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
