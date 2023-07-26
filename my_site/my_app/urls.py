@@ -8,7 +8,7 @@ from .views import (HomeView,
                     TeacherUpdateView,
                     TeacherDeleteView,
                     helloAPI, randomQuizAPI, teacherAPI,
-                    
+                    PostListCreateView,
                     )
 
 
@@ -33,5 +33,5 @@ urlpatterns = [
     path('<int:pk>/', randomQuizAPI),
     path('teacher/', teacherAPI),
     path('student/', views.StudentList.as_view(), name='student'),
-    
+    path('post/', PostListCreateView.as_view(), name='post')
 ]

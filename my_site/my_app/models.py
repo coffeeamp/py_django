@@ -47,3 +47,10 @@ class Quiz(models.Model):
 class Student(models.Model):
     student_name = models.CharField(max_length=100)
     email = models.EmailField(max_length=100)
+
+#----------------------------------------------#
+# Post Test
+class Post(models.Model):
+    title = models.CharField(max_length=100) # 제목
+    body = models.TextField() # 내용
+    created_at = models.DateTimeField(auto_now_add=True) # 생성 시간
