@@ -51,9 +51,9 @@ class Student(models.Model):
 #----------------------------------------------#
 # Post Test
 class Post(models.Model):
-    title = models.CharField(max_length=100) # 제목
-    body = models.TextField() # 내용
-    created_at = models.DateTimeField(auto_now_add=True) # 생성 시간
-    
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    pub_date = models.DateTimeField(auto_now_add=True)
+
     def __str__(self):
         return self.title
