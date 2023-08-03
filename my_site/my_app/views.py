@@ -166,11 +166,11 @@ from rest_framework import permissions
 from rest_framework import generics
 from .models import Post
 from .serializers import PostSerializer
-class PostListCreate(generics.ListCreateAPIView):
+class PostListCreateView(generics.ListCreateAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-class PostRetrieveUpdateDestroy(generics.RetrieveUpdateDestroyAPIView):
+class PostRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
