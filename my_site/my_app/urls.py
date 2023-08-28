@@ -8,7 +8,8 @@ from .views import (HomeView,
                     TeacherUpdateView,
                     TeacherDeleteView,
                     helloAPI, randomQuizAPI, teacherAPI,
-                    PostListCreateView,PostRetrieveUpdateDestroyView
+                    PostListCreateView,PostRetrieveUpdateDestroyView,
+                    ListTodo, DetailTodo,
                     )
 
 
@@ -34,5 +35,6 @@ urlpatterns = [
     path('teacher/', teacherAPI),
     path('student/', views.StudentList.as_view(), name='student'),
     path('posts/', PostListCreateView.as_view(), name='post-list-create'),
-    path('posts/<int:pk>/',PostRetrieveUpdateDestroyView.as_view(), name='update')
+    path('posts/<int:pk>/',PostRetrieveUpdateDestroyView.as_view(), name='update'),
+    path('todos/<int:pk>/', DetailTodo.as_view(), name='detail'),
 ]
